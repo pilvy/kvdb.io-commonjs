@@ -1,0 +1,24 @@
+{
+  "name": "kvdb.io",
+  "version": "1.0.0",
+  "description": "API client for kvdb.io key-value storage service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kvdb",
+    "key",
+    "value",
+    "database"
+  ],
+  "homepage": "https://kvdb.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pilvy/kvdb.io-commonjs.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
