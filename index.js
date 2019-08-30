@@ -20,13 +20,16 @@ class Bucket {
     this.access_token = access_token
   }
 
-  _fetchParams() {
+  _fetchParams(opts) {
+    opts = opts || {}
     const params = {
       headers: {
         'User-Agent': 'node-kvdb',
+        'Accept': 'application/json'
       }
     }
     if(this.access_token) params.headers['Authorization'] = `Bearer ${this.access_token}`
+    if(opts.type) params.headers['Content-Type'] = opts.type
     return params
   }
 
@@ -63,9 +66,23 @@ class Bucket {
     if(opts.values) params.append('values', 'true');
     params.append('format', 'json');
 
-    return fetch(`${KVdb.BASE_URL}/${this.id}/?${params.toString()}`)
+    return fetch(`${KVdb.BASE_URL}/${this.id}/?${params.toString()}`, this._fetchParams())
       .then(checkStatus)
       .then(res => res.json())
+  }
+
+  async accessToken(opts) {
+    opts = opts || {}
+    const params = new URLSearchParams();
+
+    if(opts.prefix) params.append('prefix', opts.prefix);
+    if(opts.permissions && opts.permissions instanceof Array) params.append('permissions', opts.permissions.join(','));
+    if(opts.ttl) params.append('ttl', opts.ttl);
+
+    return fetch(`${KVdb.BASE_URL}/${this.id}/tokens/`, {...this._fetchParams({type: 'application/x-www-form-urlencoded'}), method: 'POST', body: params.toString()})
+      .then(checkStatus)
+      .then(res => res.json())
+      .then(res => res.access_token)
   }
 }
 
@@ -73,7 +90,7 @@ function checkStatus(res) {
   if(res.ok) {
     return res;
   } else {
-    throw Error(res.statusText)
+    throw Error(`${res.status} - ${res.statusText}`)
   }
 }
 
