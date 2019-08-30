@@ -3,8 +3,6 @@
 const fetch = typeof this.window !== 'undefined' ? window.fetch : require('node-fetch');
 
 class KVdb {
-  static BASE_URL = 'https://kvdb.io'
-
   constructor() {
     throw 'call KVdb.bucket(...) instead'
   }
@@ -13,6 +11,8 @@ class KVdb {
     return new Bucket(id, access_token)
   }
 }
+
+KVdb.BASE_URL = 'https://kvdb.io'
 
 class Bucket {
   constructor(id, access_token) {
