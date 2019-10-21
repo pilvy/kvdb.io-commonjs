@@ -24,7 +24,6 @@ class Bucket {
     opts = opts || {}
     const params = {
       headers: {
-        'User-Agent': 'node-kvdb',
         'Accept': 'application/json'
       }
     }
@@ -94,4 +93,4 @@ function checkStatus(res) {
   }
 }
 
-module.exports = {KVdb: KVdb, Bucket: Bucket}
+if(typeof module !== 'undefined') module.exports = {KVdb: KVdb, Bucket: Bucket}

@@ -6,7 +6,7 @@ API client for [KVdb.io](https://kvdb.io), a managed key-value storage service t
 ## Features
 
 * Minimal
-* Promises-friendly
+* Async-ready and Promises-friendly
 * Only a single dependency when used from node.js (node-fetch)
 * Uses the Fetch API, making it compatible for use with both node.js and the browser
 
