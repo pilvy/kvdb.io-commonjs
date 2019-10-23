@@ -1,6 +1,6 @@
 {
   "name": "kvdb.io",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "KVdb.io JavaScript API client providing key-value store database access in a simple and lightweight module",
   "main": "index.js",
   "scripts": {

@@ -56,6 +56,7 @@ class Bucket {
     if(opts.skip) params.append('skip', opts.skip);
     if(opts.limit) params.append('limit', opts.limit);
     if(opts.prefix) params.append('prefix', opts.prefix);
+    if(opts.reverse) params.append('reverse', 'true');
     if(opts.values) params.append('values', 'true');
     params.append('format', 'json');
 
