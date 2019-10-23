@@ -13,9 +13,31 @@ API client for [KVdb.io](https://kvdb.io), a managed key-value storage service t
 
 ## Example Usage
 
-```javascript
-const { KVdb } = require('kvdb.io')
+### Client-Side
 
+Drop this line into your HTML source:
+
+```html
+<script src="https://unpkg.com/kvdb.io@v1.0"></script>
+```
+
+### Server-Side
+
+Install npm module:
+
+```shell
+npm i kvdb.io
+```
+
+Use it:
+
+```javascript
+const KVdb = require('kvdb.io')
+```
+
+### Use the API
+
+```javascript
 const bucket = KVdb.bucket('MY_BUCKET_ID', 'MY_ACCESS_TOKEN') // access token arg optional
 
 const myapp = async () => {
@@ -46,6 +68,26 @@ const myapp = async () => {
 myapp()
 ```
 
+### LocalForage Driver
+
+If you're interested in using the KVdb [localForage](https://localforage.github.io/localForage/) driver, it's easy:
+
+```html
+<script src="localforage.js"></script>
+<script src="https://unpkg.com/kvdb.io@v1.0"></script>
+<script>
+KVdb.installLocalForageDriver(localforage)
+
+localforage.config({
+  bucket: KVdb.bucket('MY_BUCKET_ID', 'MY_ACCESS_TOKEN')
+})
+
+localforage.setDriver([KVdb.LOCALFORAGE_DRIVER])
+  .then(() => localForage.setItem('foo', 'bar'))
+  .then(() => localForage.getItem('foo'))
+  .then(value => alert('value: ' + value))
+</script>
+```
 
 ## License
 
