@@ -1,7 +1,7 @@
 {
   "name": "kvdb.io",
-  "version": "1.0.3",
-  "description": "API client for kvdb.io key-value storage service",
+  "version": "1.0.4",
+  "description": "KVdb.io JavaScript API client providing key-value store database access in a simple and lightweight module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,8 @@
     "value",
     "database",
     "serverless",
-    "localstorage"
+    "localstorage",
+    "localforage"
   ],
   "homepage": "https://kvdb.io",
   "repository": {
